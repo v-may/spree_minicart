@@ -38,7 +38,7 @@ If you need to change the js response when you add / update the minicart, check 
 Todo
 -------
 
-- Update item quantity in the minicart
+
 
 Testing
 -------

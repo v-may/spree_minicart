@@ -46,7 +46,14 @@ function slideUpMinicart() {
 		  /* remove item from cart  */ 
 		  $(document).on('click', 'form#update-minicart a.minicart_remove', function(e){
 				console.info("minicart click to delete item");
-				$(this).parent().siblings('div[data-hook="minicart_item_quantity"]').find("input.line_item_quantity").val(0);
+				$(this).parents('.minicart_item').first().find("input.line_item_quantity").val(0);
+				$(this).parents('form').first().submit();
+				e.preventDefault();
+		  });
+
+		  /* update items quantity in the cart  */ 
+		  $(document).on('change', 'form#update-minicart input.line_item_quantity', function(e){
+				console.info("minicart update items quantity");
 				$(this).parents('form').first().submit();
 				e.preventDefault();
 		  });

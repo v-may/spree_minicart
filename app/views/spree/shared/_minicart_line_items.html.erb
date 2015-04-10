@@ -1,22 +1,20 @@
-<li class="<%= cycle('', 'alt') %>">
+<li class="minicart_item <%= cycle('', 'alt') %>" data-hook="minicart_item">
 
-<% if variant.images.length == 0 %>
-<%= link_to mini_image(variant.product), variant.product %>
-<% else %>
-<%= link_to image_tag(variant.images.first.attachment.url(:mini)), variant.product %>
-<% end %>
+  <% if variant.images.length == 0 %>
+  <%= link_to mini_image(variant.product), variant.product %>
+  <% else %>
+  <%= link_to image_tag(variant.images.first.attachment.url(:mini)), variant.product %>
+  <% end %>
 
-<%= "#{line_item.quantity}" %> x 
-<%= link_to variant.product.name, spree.product_path(variant.product) %><br>
-<%= variant.options_text %><br>
-<%= number_to_currency(line_item.price * line_item.quantity) unless line_item.quantity.nil? %>
+  <span calss="line_item_quantity" data-hook="minicart_item_quantity">
+    <%= item_form.number_field :quantity, :min => 0, :class => "line_item_quantity", :size => 5 %> 
+  </span> x 
+  <%= link_to variant.product.name, spree.product_path(variant.product) %><br>
+  <%= variant.options_text %><br>
+  <%= number_to_currency(line_item.price * line_item.quantity) unless line_item.quantity.nil? %>
 
 
   <div class='minicart-actions' data-hook="minicart_item_actions">
-    <div data-hook="minicart_item_quantity">
-      <%= item_form.hidden_field :quantity, :min => 0, :class => "line_item_quantity" %>
-    </div>
-
     <div data-hook="minicart_item_delete">
       <%= link_to image_tag('icons/delete.png'), '#', :class => 'minicart_remove', :id => "delete_#{dom_id(line_item)}" %>
     </div>

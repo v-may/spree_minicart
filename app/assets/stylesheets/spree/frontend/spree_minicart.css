@@ -44,6 +44,10 @@ ul#minicart-items li{
 }
 ul#minicart-items > li > a > img { float: left; padding: 0px 10px 0px 0px; }
 
+.minicart_item .line_item_quantity {
+  width: 35px;
+}
+
 #minicart div#minicart-details a.button.checkout{
   float:right;
 }
