@@ -5,3 +5,8 @@ $("#link-to-cart a").replaceWith('<%= escape_javascript link_to_cart %>')
 $("#minicart").replaceWith('<%= escape_javascript render("spree/shared/minicart") %>')
 
 $("#progress").slideUp();
+
+// Reload current page to refresh cart container if it present
+if ($("[data-hook='cart_container']").length > 0) {
+  location.reload();
+}
